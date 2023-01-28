@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 
 @Component
@@ -19,11 +21,12 @@ public class BookDataLoader {
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadBookTestData() {
-        var book1 = new Book("978-3-16-148410-0", "The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979.0);
-        var book2 = new Book("978-3-16-148410-1", "The Restaurant at the End of the Universe", "Douglas Adams", 1980.0);
+        bookRepository.deleteAll();
 
-        bookRepository.save(book1);
-        bookRepository.save(book2);
+        var book1 = Book.of("978-3-16-148410-0", "The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979.0);
+        var book2 = Book.of("978-3-16-148410-1", "The Restaurant at the End of the Universe", "Douglas Adams", 1980.0);
+
+        bookRepository.saveAll(List.of(book1, book2));
     }
 
 }
