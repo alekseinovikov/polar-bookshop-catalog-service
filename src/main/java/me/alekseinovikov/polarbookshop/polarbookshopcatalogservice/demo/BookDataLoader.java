@@ -23,8 +23,8 @@ public class BookDataLoader {
     public void loadBookTestData() {
         bookRepository.deleteAll();
 
-        var book1 = Book.of("978-3-16-148410-0", "The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979.0);
-        var book2 = Book.of("978-3-16-148410-1", "The Restaurant at the End of the Universe", "Douglas Adams", 1980.0);
+        var book1 = Book.of("978-3-16-148410-0", "The Hitchhiker's Guide to the Galaxy", "Douglas Adams", 1979.0, "Dava Sobel");
+        var book2 = Book.of("978-3-16-148410-1", "The Restaurant at the End of the Universe", "Douglas Adams", 1980.0, "Lehmann, Peter");
 
         bookRepository.saveAll(List.of(book1, book2));
     }
